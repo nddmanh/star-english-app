@@ -1,5 +1,6 @@
 package com.example.starenglish;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.JWT;
 import com.example.starenglish.api.ApiService;
+import com.example.starenglish.data.DataLocalManager;
 import com.example.starenglish.model.LoginRequest;
 import com.example.starenglish.model.LoginResponse;
 import com.google.gson.Gson;
@@ -28,8 +31,6 @@ public class LoginFragment extends Fragment {
     private EditText input_login_username, input_login_password;
     private Button btn_login;
 
-    private TextView tv_test_login;
-
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -43,8 +44,6 @@ public class LoginFragment extends Fragment {
         btn_login = mView.findViewById(R.id.btn_login);
         input_login_username = mView.findViewById(R.id.input_login_username);
         input_login_password = mView.findViewById(R.id.input_login_password);
-
-        tv_test_login = mView.findViewById(R.id.tv_test_login);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,33 +68,23 @@ public class LoginFragment extends Fragment {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Gson gson = new Gson();
-                Log.d("res", gson.toJson(response));
                 LoginResponse loginResponse = response.body();
-                int code = response.code();
-                System.out.println(loginResponse);
-                System.out.println(code);
                 if (loginResponse != null) {
                     String message = loginResponse.getMessage();
                     Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-
                     if (loginResponse.getStatusCode() == 200) {
-//                        String accessToken = loginResponse.getDataLogin().getAccessToken();
-//                        tv_test_login.setText(accessToken);
+                        String accessToken = loginResponse.getDataLogin().getAccessToken();
+                        DataLocalManager.setAccessToken(accessToken);
+
+                        // Change activity
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        getActivity().startActivity(intent);
                     } else {
                         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                     }
-                } else if (!response.isSuccessful()){
-                    String errorBody = response.errorBody().toString();
-
-                    System.out.println("errorBody" + errorBody);
-
+                } else {
+                    Toast.makeText(getActivity(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
                 }
-//                else {
-//                    System.out.println("saiiii3");
-//                    Toast.makeText(getActivity(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
-//
-//                }
-
             }
 
             @Override

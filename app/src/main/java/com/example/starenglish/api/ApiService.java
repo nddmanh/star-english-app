@@ -2,6 +2,8 @@ package com.example.starenglish.api;
 
 import com.example.starenglish.model.LoginRequest;
 import com.example.starenglish.model.LoginResponse;
+import com.example.starenglish.model.SignupRequest;
+import com.example.starenglish.model.SignupResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,6 +23,11 @@ public interface ApiService {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build().create(ApiService.class);
 
+    // Auth
     @POST("v1/auth/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
+
+    @POST("v1/auth/register")
+    Call<SignupResponse> signup(@Body SignupRequest signupRequest);
+
 }

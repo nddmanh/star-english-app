@@ -51,12 +51,6 @@
             android:background="@drawable/bg_red_corner_30"
             android:textColor="@color/white"/>
 
-        <TextView
-            android:id="@+id/tv_test_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="xin chafo"
-            android:layout_marginTop="40dp"/>
     </LinearLayout>
 
 </FrameLayout>

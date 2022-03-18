@@ -5,10 +5,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.starenglish.data.DataLocalManager;
 
 public class OnboardingFragment3 extends Fragment {
 
@@ -28,8 +31,16 @@ public class OnboardingFragment3 extends Fragment {
         btnGetStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                getActivity().startActivity(intent);
+                String accessToken = DataLocalManager.getAccessToken();
+
+                if (accessToken.isEmpty()) {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    getActivity().startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    getActivity().startActivity(intent);
+                }
+
             }
         });
 
