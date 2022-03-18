@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/icons8_jake_100"
+            android:layout_marginBottom="20dp"/>
+        <EditText
+            android:id="@+id/input_register_username"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:background="@drawable/bg_blue_corner_10"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColorHint="@color/gray"/>
+        <EditText
+            android:id="@+id/input_register_password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_blue_corner_10"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColorHint="@color/gray"/>
+        <EditText
+            android:id="@+id/input_register_fullname"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Full name"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_blue_corner_10"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColorHint="@color/gray"/>
+        <EditText
+            android:id="@+id/input_register_school"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="School"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_blue_corner_10"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColorHint="@color/gray"/>
+        <EditText
+            android:id="@+id/input_register_age"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_blue_corner_10"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColorHint="@color/gray"/>
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:padding="15dp"
+            android:text="Sign up"
+            android:background="@drawable/bg_red_corner_30"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</FrameLayout>

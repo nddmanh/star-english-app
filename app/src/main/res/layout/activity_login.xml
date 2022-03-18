@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/tv_post_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_2"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:padding="15dp"
+        android:text="Account"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/white"
+        android:textSize="35dp" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_login"
+        android:layout_width="match_parent"
+        app:tabSelectedTextColor="@color/blue_2"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

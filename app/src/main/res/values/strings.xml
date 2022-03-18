@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">StarEnglish</string>
+    <string name="introduce_title_1">STAR ENGLISH</string>
+    <string name="introduce_content_1">Welcome to Star English \n Top 1 application about learn English</string>
+    <string name="introduce_title_2">DICTIONARY</string>
+    <string name="introduce_content_2">Vocabulary rich \n Support to look up the dictionary anytime, anywhere</string>
+    <string name="introduce_title_3">EXAM</string>
+    <string name="introduce_content_3">A set of international standard test questions, \n helping to accurately assess competence</string>
+    <string name="action_home">Home</string>
+    <string name="action_dictionary">Dictionary</string>
+    <string name="action_exam">Exam</string>
+    <string name="action_user">User</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="dictionary_fragment">Dictionary Fragment</string>
+    <string name="exam_fragment">Exam Fragment</string>
+    <string name="user_fragment">User Fragment</string>
+
+    <string name="action_login">Login</string>
+    <string name="action_register">Register</string>
+
+    <string name="diction_text_e_e">English - English dictionary with weekly updated vocabulary will support you to understand English most closely</string>
+    <string name="diction_text_v_e">Vietnamese - English dictionary with weekly updated vocabulary will support you to understand Vietnamese most closely</string>
+    <string name="diction_text_e_v">English - Vietnamese dictionary with weekly updated vocabulary will support you to understand English most closely</string>
+
+    <string name="desc_exam_easy">Easy level, basic knowledge test</string>
+    <string name="desc_exam_medium">Moderate level, knowledge test is average</string>
+    <string name="desc_exam_hard">Difficult level, test knowledge at advanced</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
