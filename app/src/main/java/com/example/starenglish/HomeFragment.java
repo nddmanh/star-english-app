@@ -6,15 +6,24 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.starenglish.adapter.PostAdapter;
+import com.example.starenglish.api.ApiService;
 import com.example.starenglish.model.Post;
+import com.example.starenglish.model.PostResponse;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -35,19 +44,28 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         rcvPost.setLayoutManager(linearLayoutManager);
 
-        postAdapter.setData(getListPost());
-        rcvPost.setAdapter(postAdapter);
+        ApiService.apiService.getPosts().enqueue(new Callback<PostResponse>() {
+            @Override
+            public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
+                Toast.makeText(getActivity(), "Call api oke1: " , Toast.LENGTH_SHORT).show();
+                PostResponse postResponse = response.body();
+                if (postResponse != null && response.code() == 200) {
+                    List<Post> posts = postResponse.getDataPost().getPosts();
+
+                    // Set data posts
+                    postAdapter.setData(posts);
+                    rcvPost.setAdapter(postAdapter);
+                } else {
+                    Toast.makeText(getActivity(), "Call api oke222222: " , Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "Call api error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return view;
-    }
-
-    private List<Post> getListPost() {
-        List<Post> list = new ArrayList<>();
-
-        list.add(new Post(R.drawable.avt_1, "Post 1"));
-        list.add(new Post(R.drawable.avt_1, "Post 2"));
-        list.add(new Post(R.drawable.avt_1, "Post 3"));
-        list.add(new Post(R.drawable.avt_1, "Post 4"));
-        list.add(new Post(R.drawable.avt_1, "Post 5"));
-        return list;
     }
 }
