@@ -6,9 +6,11 @@
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/drawable/bg_blue_corner_10.xml" value="0.19895833333333332" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/drawable/bg_blue_corner_30.xml" value="0.19895833333333332" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/drawable/bg_circle_red.xml" value="0.3828125" />
+        <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/drawable/bg_orange_corner_30.xml" value="0.21041666666666667" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/drawable/bg_red_corner_30.xml" value="0.19895833333333332" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_login.xml" value="0.18697916666666667" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_multiple_choice.xml" value="0.19427083333333334" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_onboarding.xml" value="0.20380434782608695" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_one_post.xml" value="0.20520833333333333" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_dictionary.xml" value="0.22" />
@@ -19,7 +21,7 @@
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_onboarding2.xml" value="0.2848731884057971" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_onboarding3.xml" value="0.2848731884057971" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_signup.xml" value="0.18697916666666667" />
-        <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_user.xml" value="0.2803442028985507" />
+        <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_user.xml" value="0.2" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/item_post.xml" value="0.2526041666666667" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/xml/network_security_config.xml" value="0.20520833333333333" />

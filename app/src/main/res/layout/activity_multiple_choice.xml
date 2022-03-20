@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".MultipleChoiceActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LEVEL"
+        android:textColor="@color/red"
+        android:textSize="20dp"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SCORE: 30"
+        android:textColor="@color/red"
+        android:textSize="30dp"
+        android:fontFamily="@font/segoe_ui_bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+        <TextView
+            android:id="@+id/tv_content_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Content question 1"
+            android:textSize="16dp"
+            android:background="@drawable/bg_blue_corner_10"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:padding="40dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 1"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:background="@drawable/bg_orange_corner_30"
+            android:padding="15dp"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_answer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Answer 1"
+        android:background="@drawable/bg_blue_corner_30"
+        android:fontFamily="@font/segoe_ui"
+        android:textColor="@color/white"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_answer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Answer 2"
+        android:background="@drawable/bg_blue_corner_30"
+        android:fontFamily="@font/segoe_ui"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_answer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Answer 3"
+        android:background="@drawable/bg_blue_corner_30"
+        android:fontFamily="@font/segoe_ui"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_answer4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Answer 4"
+        android:background="@drawable/bg_blue_corner_30"
+        android:fontFamily="@font/segoe_ui"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:gravity="center"/>
+
+</LinearLayout>
