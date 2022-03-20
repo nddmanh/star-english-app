@@ -1,5 +1,6 @@
 package com.example.starenglish.api;
 
+import com.example.starenglish.model.CurrentUserResponse;
 import com.example.starenglish.model.LoginRequest;
 import com.example.starenglish.model.LoginResponse;
 import com.example.starenglish.model.PostResponse;
@@ -13,6 +14,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -32,6 +34,9 @@ public interface ApiService {
 
     @POST("v1/auth/register")
     Call<SignupResponse> signup(@Body SignupRequest signupRequest);
+
+    @GET("v1/auth")
+    Call<CurrentUserResponse> getCurrentUser(@Header("authorization") String auth);
 
     // Post
     @GET("v1/posts")

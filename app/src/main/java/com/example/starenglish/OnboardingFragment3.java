@@ -40,7 +40,6 @@ public class OnboardingFragment3 extends Fragment {
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     getActivity().startActivity(intent);
                 }
-
             }
         });
 

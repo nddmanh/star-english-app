@@ -47,7 +47,6 @@ public class HomeFragment extends Fragment {
         ApiService.apiService.getPosts().enqueue(new Callback<PostResponse>() {
             @Override
             public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
-                Toast.makeText(getActivity(), "Call api oke1: " , Toast.LENGTH_SHORT).show();
                 PostResponse postResponse = response.body();
                 if (postResponse != null && response.code() == 200) {
                     List<Post> posts = postResponse.getDataPost().getPosts();
@@ -56,7 +55,7 @@ public class HomeFragment extends Fragment {
                     postAdapter.setData(posts);
                     rcvPost.setAdapter(postAdapter);
                 } else {
-                    Toast.makeText(getActivity(), "Call api oke222222: " , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), postResponse.getMessage() , Toast.LENGTH_SHORT).show();
                 }
             }
 
