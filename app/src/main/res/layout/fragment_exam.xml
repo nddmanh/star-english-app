@@ -31,7 +31,7 @@
             android:layout_below="@+id/tv_exam_header">
 
             <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/dictionany_e_e"
+                android:id="@+id/exam_lv_esay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -65,7 +65,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/dictionany_v_e"
+                android:id="@+id/exam_lv_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -99,7 +99,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/dictionany_e_v"
+                android:id="@+id/exam_lv_hard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 xmlns:app="http://schemas.android.com/apk/res-auto"

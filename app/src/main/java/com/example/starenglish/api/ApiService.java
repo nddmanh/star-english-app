@@ -4,8 +4,11 @@ import com.example.starenglish.model.CurrentUserResponse;
 import com.example.starenglish.model.LoginRequest;
 import com.example.starenglish.model.LoginResponse;
 import com.example.starenglish.model.PostResponse;
+import com.example.starenglish.model.QuestionResponse;
 import com.example.starenglish.model.SignupRequest;
 import com.example.starenglish.model.SignupResponse;
+import com.example.starenglish.model.UpdateScoreUserRequest;
+import com.example.starenglish.model.UpdateScoreUserResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -15,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -41,4 +45,15 @@ public interface ApiService {
     // Post
     @GET("v1/posts")
     Call<PostResponse> getPosts();
+
+    // Question
+    @GET("v1/questions")
+    Call<QuestionResponse> getQuestion(@Query("page") int page,
+                                       @Query("limit") int limit,
+                                       @Query("level") String level);
+
+    // User
+    @PATCH("v1/users/update-score")
+    Call<UpdateScoreUserResponse> updateScoreUser(@Header("authorization") String auth,
+                                                  @Body UpdateScoreUserRequest updateScoreUserRequest);
 }
