@@ -15,6 +15,9 @@
         android:theme="@style/Theme.StarEnglish"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DictionaryActivity"
+            android:exported="true" />
+        <activity
             android:name=".MultipleChoiceActivity"
             android:exported="true" />
         <activity

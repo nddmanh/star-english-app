@@ -9,8 +9,11 @@ import com.example.starenglish.model.SignupRequest;
 import com.example.starenglish.model.SignupResponse;
 import com.example.starenglish.model.UpdateScoreUserRequest;
 import com.example.starenglish.model.UpdateScoreUserResponse;
+import com.example.starenglish.model.dictionary.APIResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -20,6 +23,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -56,4 +60,9 @@ public interface ApiService {
     @PATCH("v1/users/update-score")
     Call<UpdateScoreUserResponse> updateScoreUser(@Header("authorization") String auth,
                                                   @Body UpdateScoreUserRequest updateScoreUserRequest);
+
+    // Dictionary
+    @GET("v1/dictionary/{word}")
+    Call<List<APIResponse>> callMeanings(@Path("word") String word);
+
 }
