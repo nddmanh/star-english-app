@@ -12,7 +12,7 @@
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_login.xml" value="0.18697916666666667" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_multiple_choice.xml" value="0.25" />
-        <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_onboarding.xml" value="0.20380434782608695" />
+        <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_onboarding.xml" value="0.16" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/activity_one_post.xml" value="0.20520833333333333" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/definitions_list_items.xml" value="0.17831813576494426" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_dictionary.xml" value="0.22" />
@@ -25,6 +25,7 @@
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_signup.xml" value="0.18697916666666667" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/fragment_user.xml" value="0.2" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/item_post.xml" value="0.2526041666666667" />
+        <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/meanings_list_items.xml" value="0.1828125" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/layout/phonetic_list_items.xml" value="0.18931159420289856" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/CODE/Android/Project/StarEnglish/app/src/main/res/xml/network_security_config.xml" value="0.20520833333333333" />

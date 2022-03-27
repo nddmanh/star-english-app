@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,11 +31,14 @@ public class DictionaryActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     PhoneticsAdapter phoneticsAdapter;
     MeanigsAdapter meanigsAdapter;
+    Button btn_back_dictionary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
+
+        btn_back_dictionary = findViewById(R.id.btn_back_dictionary);
 
         search_view = findViewById(R.id.search_view);
         tv_word = findViewById(R.id.tv_word);
@@ -62,6 +67,12 @@ public class DictionaryActivity extends AppCompatActivity {
             }
         });
 
+        btn_back_dictionary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     private final OnFetchDataListener listener = new OnFetchDataListener() {
         @Override
@@ -95,8 +106,8 @@ public class DictionaryActivity extends AppCompatActivity {
         recycler_meanings.setAdapter(meanigsAdapter);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//    }
 }

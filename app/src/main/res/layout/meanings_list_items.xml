@@ -20,7 +20,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:padding="8dp"
-            android:textStyle="bold"
+            android:fontFamily="@font/segoe_ui_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <androidx.recyclerview.widget.RecyclerView

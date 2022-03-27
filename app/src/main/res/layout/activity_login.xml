@@ -23,7 +23,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_login"
         android:layout_width="match_parent"
-        app:tabSelectedTextColor="@color/blue_2"
+        app:tabSelectedTextColor="@color/grey"
         android:layout_height="wrap_content"/>
 
     <androidx.viewpager.widget.ViewPager
