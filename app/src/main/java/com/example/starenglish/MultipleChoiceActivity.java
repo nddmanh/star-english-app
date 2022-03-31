@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -36,13 +37,13 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
     private TextView tvQuestion;
     private TextView tvContentQuestion;
     private TextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4;
+    private MediaPlayer mp;
 
     private List<Question> mListQuestion;
     private Question mQuestion;
     private int currentQuestion = 0;
     private int score = 0;
     private  String accessToken = DataLocalManager.getAccessToken();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +82,6 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
                 Toast.makeText(MultipleChoiceActivity.this, "Call api error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     private void initUI() {
@@ -135,6 +134,7 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
         tvAnswer4.setOnClickListener(this);
     }
 
+    // Fix me: Android Preventing Double Click On A Button
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -165,10 +165,12 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
             @Override
             public void run() {
                 if (question.getCorrect_answer().equals(choice)) {
+                    correctAnserSound();
                     score++;
                     textView.setBackgroundResource(R.drawable.bg_green_corner_30);
                     nextQuestion();
                 } else {
+                    wrongAnserSound();
                     textView.setBackgroundResource(R.drawable.bg_red_corner_30);
                     showAnswerCorrect(question);
                     nextQuestion();
@@ -213,7 +215,7 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
                 public void run() {
                     setDataQuestion(mListQuestion.get(currentQuestion));
                 }
-            }, 1000);
+            }, 2000);
         }
     }
 
@@ -224,7 +226,6 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // Quit the activity
                 dialogInterface.dismiss();
                 finish();
             }
@@ -236,5 +237,39 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
     private void openLoginActivity() {
         Intent intent = new Intent(MultipleChoiceActivity.this, LoginActivity.class);
         MultipleChoiceActivity.this.startActivity(intent);
+    }
+
+    private void correctAnserSound() {
+        mp = MediaPlayer.create(MultipleChoiceActivity.this, R.raw.correct_answer_sound_effect);
+        mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mp.start();
+            }
+        });
+
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mp.release();
+            }
+        });
+    }
+
+    private void wrongAnserSound() {
+        mp = MediaPlayer.create(MultipleChoiceActivity.this, R.raw.wrong_answer_sound_effect);
+        mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mp.start();
+            }
+        });
+
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mp.release();
+            }
+        });
     }
 }

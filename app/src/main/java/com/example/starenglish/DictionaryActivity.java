@@ -105,9 +105,4 @@ public class DictionaryActivity extends AppCompatActivity {
         meanigsAdapter = new MeanigsAdapter(this, apiResponse.getMeanings());
         recycler_meanings.setAdapter(meanigsAdapter);
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//    }
 }
