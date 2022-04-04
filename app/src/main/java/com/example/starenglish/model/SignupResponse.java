@@ -1,19 +1,13 @@
 package com.example.starenglish.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class SignupResponse {
     private int statusCode;
 
     private String message;
 
-    @SerializedName("data")
-    private DataLogin dataLogin;
-
-    public SignupResponse(int statusCode, String message, DataLogin dataLogin) {
+    public SignupResponse(int statusCode, String message) {
         this.statusCode = statusCode;
         this.message = message;
-        this.dataLogin = dataLogin;
     }
 
     public int getStatusCode() {
@@ -32,20 +26,4 @@ public class SignupResponse {
         this.message = message;
     }
 
-    public DataLogin getDataLogin() {
-        return dataLogin;
-    }
-
-    public void setDataLogin(DataLogin dataLogin) {
-        this.dataLogin = dataLogin;
-    }
-
-    @Override
-    public String toString() {
-        return "SignupResponse{" +
-                "statusCode=" + statusCode +
-                ", message='" + message + '\'' +
-                ", dataLogin=" + dataLogin +
-                '}';
-    }
 }

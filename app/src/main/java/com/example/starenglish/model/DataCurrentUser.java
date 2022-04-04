@@ -1,17 +1,15 @@
 package com.example.starenglish.model;
 
 public class DataCurrentUser {
-    private String _id, username, fullname, school, role;
-    private int score, age;
+    private String _id, email, fullname, role;
+    private int score;
 
-    public DataCurrentUser(String _id, String username, String fullname, String school, String role, int score, int age) {
+    public DataCurrentUser(String _id, String email, String fullname, String role, int score) {
         this._id = _id;
-        this.username = username;
+        this.email = email;
         this.fullname = fullname;
-        this.school = school;
         this.role = role;
         this.score = score;
-        this.age = age;
     }
 
     public String get_id() {
@@ -22,12 +20,12 @@ public class DataCurrentUser {
         this._id = _id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFullname() {
@@ -38,28 +36,12 @@ public class DataCurrentUser {
         this.fullname = fullname;
     }
 
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
     public int getScore() {
         return score;
     }
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getRole() {

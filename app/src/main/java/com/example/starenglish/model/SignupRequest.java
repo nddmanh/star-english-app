@@ -1,23 +1,20 @@
 package com.example.starenglish.model;
 
 public class SignupRequest {
-    private String username, password, fullname, school;
-    private int age;
+    private String email, password, fullname;
 
-    public SignupRequest(String username, String password, String fullname, String school, int age) {
-        this.username = username;
+    public SignupRequest(String email, String password, String fullname) {
+        this.email = email;
         this.password = password;
         this.fullname = fullname;
-        this.school = school;
-        this.age = age;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -34,21 +31,5 @@ public class SignupRequest {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
-    }
-
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 }

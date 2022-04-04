@@ -22,7 +22,7 @@
             android:id="@+id/input_login_username"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Email"
             android:background="@drawable/bg_blue_corner_10"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
@@ -52,6 +52,36 @@
             android:background="@drawable/bg_red_corner_30"
             android:textColor="@color/white"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/segoe_ui"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:id="@+id/signin_gg_btn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_white_corner_30"
+            android:padding="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/google"
+                android:layout_marginEnd="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In with Google"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/segoe_ui_bold"/>
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

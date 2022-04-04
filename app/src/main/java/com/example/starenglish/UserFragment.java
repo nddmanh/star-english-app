@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class UserFragment extends Fragment {
 
-    private TextView tv_user_max_score, tv_user_fullname, tv_user_school, tv_user_age;
+    private TextView tv_user_max_score, tv_user_fullname, tv_user_email;
     private Button btn_user_leaderboard,btn_user_logout;
 
     public UserFragment() {
@@ -43,8 +43,7 @@ public class UserFragment extends Fragment {
         // Mapping UI
         tv_user_max_score = view.findViewById(R.id.tv_user_max_score);
         tv_user_fullname = view.findViewById(R.id.tv_user_fullname);
-        tv_user_school = view.findViewById(R.id.tv_user_school);
-        tv_user_age = view.findViewById(R.id.tv_user_age);
+        tv_user_email = view.findViewById(R.id.tv_user_email);
         btn_user_leaderboard = view.findViewById(R.id.btn_user_leaderboard);
         btn_user_logout = view.findViewById(R.id.btn_user_logout);
 
@@ -92,10 +91,11 @@ public class UserFragment extends Fragment {
                     if (currentUserResponse != null && response.code() == 200) {
                         tv_user_max_score.setText("MAX SCORE: " + currentUserResponse.getDataCurrentUser().getScore());
                         tv_user_fullname.setText(currentUserResponse.getDataCurrentUser().getFullname());
-                        tv_user_school.setText(currentUserResponse.getDataCurrentUser().getSchool());
-                        tv_user_age.setText("" + currentUserResponse.getDataCurrentUser().getAge());
+                        tv_user_email.setText(currentUserResponse.getDataCurrentUser().getEmail());
                     } else {
-                        Toast.makeText(getActivity(), currentUserResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Can not get info user", Toast.LENGTH_SHORT).show();
+                        openLoginActivity();
+                        return;
                     }
                 }
 
