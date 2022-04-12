@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +16,16 @@ import android.widget.Toast;
 
 import com.example.starenglish.api.ApiService;
 import com.example.starenglish.data.DataLocalManager;
+import com.example.starenglish.model.LoginGoogleRequest;
 import com.example.starenglish.model.LoginRequest;
 import com.example.starenglish.model.LoginResponse;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.Scope;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -66,18 +70,18 @@ public class LoginFragment extends Fragment {
             }
         });
 
-//        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-//        gsc = GoogleSignIn.getClient(this, gso);
+        String serverClientId = getString(R.string.server_client_id);
 
-//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-//        if(acct!=null){
-//            navigateToSecondActivity();
-//        }
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))
+                .requestEmail()
+                .requestIdToken(serverClientId)
+                .build();
+        gsc = GoogleSignIn.getClient(getActivity(), gso);
 
         signin_gg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Clcick", Toast.LENGTH_SHORT).show();
                 signinWithGoogle();
             }
         });
@@ -86,6 +90,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void signinWithGoogle() {
+        Intent signInIntent = gsc.getSignInIntent();
+        startActivityForResult(signInIntent,1000);
     }
 
     @Override
@@ -93,15 +99,20 @@ public class LoginFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1000){
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
             try {
-                task.getResult(ApiException.class);
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                getActivity().startActivity(intent);
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                String tokenGoogle = account.getIdToken();
+                loginGoogle(tokenGoogle);
             } catch (ApiException e) {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         }
+
+    }
+
+    private void changeToMainActivity() {
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        getActivity().startActivity(intent);
     }
 
     private void login(String username, String password) {
@@ -110,7 +121,6 @@ public class LoginFragment extends Fragment {
         ApiService.apiService.login(loginRequest).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                Gson gson = new Gson();
                 LoginResponse loginResponse = response.body();
                 if (loginResponse != null) {
                     String message = loginResponse.getMessage();
@@ -122,15 +132,45 @@ public class LoginFragment extends Fragment {
                     if (loginResponse.getStatusCode() == 200) {
                         String accessToken = loginResponse.getDataLogin().getAccessToken();
                         DataLocalManager.setAccessToken(accessToken);
-
-                        // Change activity
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        getActivity().startActivity(intent);
+                        changeToMainActivity();
                     } else {
                         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getActivity(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "Call api error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void loginGoogle(String tokenGoogle) {
+        LoginGoogleRequest loginGoogleRequest = new LoginGoogleRequest(tokenGoogle);
+
+        ApiService.apiService.loginGoogle(loginGoogleRequest).enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                LoginResponse loginResponse = response.body();
+                if (loginResponse != null) {
+                    String message = loginResponse.getMessage();
+                    Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                    if (loginResponse.getDataLogin().getAccessToken().isEmpty()) {
+                        Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (loginResponse.getStatusCode() == 200) {
+                        String accessToken = loginResponse.getDataLogin().getAccessToken();
+                        DataLocalManager.setAccessToken(accessToken);
+                        changeToMainActivity();
+                    } else {
+                        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Error! An error occurred. Please try again later.", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -1,6 +1,7 @@
 package com.example.starenglish.api;
 
 import com.example.starenglish.model.CurrentUserResponse;
+import com.example.starenglish.model.LoginGoogleRequest;
 import com.example.starenglish.model.LoginRequest;
 import com.example.starenglish.model.LoginResponse;
 import com.example.starenglish.model.PostResponse;
@@ -45,6 +46,9 @@ public interface ApiService {
 
     @GET("v1/auth")
     Call<CurrentUserResponse> getCurrentUser(@Header("authorization") String auth);
+
+    @POST("v1/auth/google")
+    Call<LoginResponse> loginGoogle(@Body LoginGoogleRequest loginGoogleRequest);
 
     // Post
     @GET("v1/posts")
