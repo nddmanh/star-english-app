@@ -3,6 +3,7 @@ package com.example.starenglish.api;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.starenglish.model.LeaderboardResponse;
 import com.example.starenglish.model.dictionary.APIResponse;
 
 import java.util.List;
@@ -41,4 +42,28 @@ public class RequestManager {
             Toast.makeText(context, "An error occurred!", Toast.LENGTH_SHORT).show();
         }
     };
+
+    public void getUserLeaderboard(OnFetchDataLeaderboardListener listener, int page, int limit) {
+        Call<LeaderboardResponse> call = ApiService.apiService.getLeaderboard(page, limit);
+        try {
+            call.enqueue(new Callback<LeaderboardResponse>() {
+                @Override
+                public void onResponse(Call<LeaderboardResponse> call, Response<LeaderboardResponse> response) {
+                    if (!response.isSuccessful()) {
+                        Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    listener.onFetchData(response.body(), response.message());
+                }
+
+                @Override
+                public void onFailure(Call<LeaderboardResponse> call, Throwable t) {
+                    listener.onError("Request Failed!");
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(context, "An error occurred!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

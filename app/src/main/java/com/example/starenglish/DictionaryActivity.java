@@ -74,6 +74,7 @@ public class DictionaryActivity extends AppCompatActivity {
             }
         });
     }
+
     private final OnFetchDataListener listener = new OnFetchDataListener() {
         @Override
         public void onFetchData(APIResponse apiResponse, String message) {

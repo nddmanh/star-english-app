@@ -15,6 +15,11 @@ public class User {
         this.password = password;
     }
 
+    public User(String fullname, int score) {
+        this.fullname = fullname;
+        this.score = score;
+    }
+
     public User(String username, String password, String fullname, String school, int age) {
         this.username = username;
         this.password = password;
@@ -71,6 +76,14 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     @Override

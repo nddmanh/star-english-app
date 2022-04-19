@@ -115,7 +115,8 @@ public class UserFragment extends Fragment {
     }
 
     private void viewLeaderboard() {
-        Toast.makeText(getActivity(), "btnViewLeaderboard clicked", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), LeaderboardActivity.class);
+        getActivity().startActivity(intent);
     }
 
     private void openLoginActivity() {

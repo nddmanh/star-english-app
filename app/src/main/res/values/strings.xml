@@ -15,6 +15,8 @@
     <string name="exam_fragment">Exam Fragment</string>
     <string name="user_fragment">User Fragment</string>
 
+    <string name="leaderboard">Leaderboard</string>
+
     <string name="action_login">Login</string>
     <string name="action_register">Register</string>
 

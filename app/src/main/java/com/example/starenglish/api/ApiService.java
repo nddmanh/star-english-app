@@ -1,6 +1,7 @@
 package com.example.starenglish.api;
 
 import com.example.starenglish.model.CurrentUserResponse;
+import com.example.starenglish.model.LeaderboardResponse;
 import com.example.starenglish.model.LoginGoogleRequest;
 import com.example.starenglish.model.LoginRequest;
 import com.example.starenglish.model.LoginResponse;
@@ -64,7 +65,9 @@ public interface ApiService {
     @PATCH("v1/users/update-score")
     Call<UpdateScoreUserResponse> updateScoreUser(@Header("authorization") String auth,
                                                   @Body UpdateScoreUserRequest updateScoreUserRequest);
-
+    @GET("v1/users/leaderboard")
+    Call<LeaderboardResponse> getLeaderboard(@Query("page") int page,
+                                             @Query("limit") int limit);
     // Dictionary
     @GET("v1/dictionary/{word}")
     Call<List<APIResponse>> callMeanings(@Path("word") String word);
