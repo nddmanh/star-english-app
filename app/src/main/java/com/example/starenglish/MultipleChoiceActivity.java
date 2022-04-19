@@ -43,7 +43,9 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
     private Question mQuestion;
     private int currentQuestion = 0;
     private int score = 0;
-    private  String accessToken = DataLocalManager.getAccessToken();
+    private String accessToken = DataLocalManager.getAccessToken();
+
+    private int NUM_QUESTIONS = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +56,23 @@ public class MultipleChoiceActivity extends AppCompatActivity implements View.On
         Bundle bundle = intent.getExtras();
         String level = bundle.get("EXAM_LEVEL").toString();
 
+        if (level.equals("EASY")) {
+            NUM_QUESTIONS = 10;
+        } else if (level.equals("MEDIUM")) {
+            NUM_QUESTIONS = 15;
+        } else if (level.equals("HARD")) {
+            NUM_QUESTIONS = 20;
+        } else {
+            Toast.makeText(MultipleChoiceActivity.this, "Don't have question for this level" , Toast.LENGTH_SHORT).show();
+        }
+
         tv_multi_level = findViewById(R.id.tv_multi_level);
         tv_multi_score = findViewById(R.id.tv_multi_score);
         tv_multi_level.setText("LEVEL: " + level);
 
         initUI();
 
-        ApiService.apiService.getQuestion(1, 10, level).enqueue(new Callback<QuestionResponse>() {
+        ApiService.apiService.getQuestion(1, NUM_QUESTIONS, level).enqueue(new Callback<QuestionResponse>() {
             @Override
             public void onResponse(Call<QuestionResponse> call, Response<QuestionResponse> response) {
                 QuestionResponse questionResponse = response.body();

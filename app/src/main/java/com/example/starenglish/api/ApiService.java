@@ -29,12 +29,13 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    String URL_SERVER_STAR_ENGLISH = "http://localhost:5000/api/";
-    //192.168.56.1
+    String URL_SERVER_STAR_ENGLISH = "https://star-english.herokuapp.com/api/";
+    // 192.168.56.1 - http://localhost:5000/api/
+    // https://star-english.herokuapp.com/api/
 
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
-    ApiService apiService = new Retrofit.Builder().baseUrl("http://192.168.56.1:5000/api/")
+    ApiService apiService = new Retrofit.Builder().baseUrl(URL_SERVER_STAR_ENGLISH)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build().create(ApiService.class);
 
